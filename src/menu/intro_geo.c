@@ -2,7 +2,7 @@
 
 #include "game/memory.h"
 #include "game/segment2.h"
-#include "game/segment7.h"
+// #include "game/segment7.h"
 #include "engine/math_util.h"
 #include "engine/colors.h"
 #include "intro_geo.h"
@@ -12,6 +12,7 @@
 #include "buffers/framebuffers.h"
 #include "game/game_init.h"
 #include "audio/external.h"
+#include "levels/intro/header.h"
 
 // frame counts for the zoom in, hold, and zoom out of title model
 #define INTRO_STEPS_ZOOM_IN 20
@@ -72,7 +73,7 @@ Gfx *geo_intro_super_mario_64_logo(s32 callContext, struct GraphNode *node, UNUS
         guScale(scaleMat, scale[0], scale[1], scale[2]);
 
         gSPMatrix(dlIter++, scaleMat, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-        gSPDisplayList(dlIter++, &intro_seg7_dl_main_logo);  // draw model
+        gSPDisplayList(dlIter++, &n38_intro_seg7_dl_main_logo_mesh_mesh);  // draw model
         gSPPopMatrix(dlIter++, G_MTX_MODELVIEW);
         gSPEndDisplayList(dlIter);
 
@@ -103,7 +104,7 @@ Gfx *geo_intro_tm_copyright(s32 callContext, struct GraphNode *node, UNUSED void
             SET_GRAPH_NODE_LAYER(graphNode->flags, LAYER_TRANSPARENT);
             gDPSetRenderMode(dlIter++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
         }
-        gSPDisplayList(dlIter++, &intro_seg7_dl_copyright_trademark); // draw model
+        // gSPDisplayList(dlIter++, &intro_seg7_dl_copyright_trademark); // draw model
         gSPEndDisplayList(dlIter);
 
         // Once the "Super Mario 64" logo has just about zoomed fully, fade in the "TM" and copyright text
